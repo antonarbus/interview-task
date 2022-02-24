@@ -1,33 +1,36 @@
 <template>
-  <q-btn :class="store.btnClass" @click="parseData">{{store.btnText}}</q-btn>
+  <q-btn :class="store.state.btnClass" @click="parseData">{{ store.state.btnText }}</q-btn>
 </template>
 
-<script>
-  import { store } from "./store.js";
-  import { 
+<script lang="ts">
+  import { store } from './store'
+  import {
     isDataOk,
-    getRowsForSalesQuasarTable,
-    getRowsForSummaryQuasarTable,
-    getColsForSalesQuasarTable,
-    getColsForSummaryQuasarTable,
+    getRowsForTable1,
+    getRowsForTable2,
+    getColsForTable1,
+    getColsForTable2,
     shakeBtn,
-  } from '../helpers/helpers.js'
-  
+  } from '../helpers/helpers'
+
   export default {
     data() {
       return {
-        store: store.state,
+        store: store,
       }
     },
     methods: {
-      parseData() {
-        const text = store.state.textareaText
-        if (!isDataOk(text)) shakeBtn()
-        if (!isDataOk(text)) return
-        store.state.rowsFirstTable = getRowsForSalesQuasarTable(text)
-        store.state.rowsSecondTable = getRowsForSummaryQuasarTable(text)
-        store.state.colsFirstTable = getColsForSalesQuasarTable(text)
-        store.state.colsSecondTable = getColsForSummaryQuasarTable()
+      parseData(): void {
+        console.log(store.state)
+        const text = store.state.inputText
+        if (!isDataOk(text)) {
+          shakeBtn()
+          return
+        }
+        store.state.rowsFirstTable = getRowsForTable1(text)
+        store.state.rowsSecondTable = getRowsForTable2(text)
+        store.state.colsFirstTable = getColsForTable1(text)
+        store.state.colsSecondTable = getColsForTable2()
         store.state.showTable = true
         store.state.btnText = 'Update'
       },
@@ -36,22 +39,36 @@
 </script>
 
 <style lang="scss" scoped>
-  button {
-    margin-top: 3rem;
+button {
+  margin-top: 3rem;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
   }
-  @keyframes shake {
-    0% { transform: translateX(0) }
-    10% { transform: translateX(5px) }
-    30% { transform: translateX(0) }
-    50% { transform: translateX(5px) }
-    70% { transform: translateX(0) }
-    90% { transform: translateX(5px) }
-    100% { transform: translateX(0) }
+  10% {
+    transform: translateX(5px);
   }
-  .shaking {
-    animation-name: shake;
-    animation-duration: .3s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
+  30% {
+    transform: translateX(0);
   }
+  50% {
+    transform: translateX(5px);
+  }
+  70% {
+    transform: translateX(0);
+  }
+  90% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.shaking {
+  animation-name: shake;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
 </style>

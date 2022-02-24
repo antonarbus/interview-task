@@ -1,10 +1,11 @@
 {
-  "name": "interview-task",
+  "name": "aico-interview-test",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview --port 5050",
+    "typecheck": "vue-tsc --noEmit",
     "test": "vitest"
   },
   "dependencies": {
@@ -16,9 +17,14 @@
   },
   "devDependencies": {
     "@quasar/vite-plugin": "^1.0.4",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^16.11.25",
     "@vitejs/plugin-vue": "^2.2.2",
+    "@vue/tsconfig": "^0.1.3",
     "sass": "^1.32.0",
+    "typescript": "~4.5.5",
     "vite": "^2.8.4",
-    "vitest": "^0.5.4"
+    "vitest": "^0.5.4",
+    "vue-tsc": "^0.31.4"
   }
 }

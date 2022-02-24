@@ -1,5 +1,6 @@
 // following row structure is required by Quasar table columns https://v1.quasar.dev/vue-components/table
 import moment from 'moment';
+import { store } from "../components/store.js";
 
 const parseStrToArr = str =>
   str
@@ -9,12 +10,38 @@ const parseStrToArr = str =>
     .map(row => row.split(';'))
     .map(rowArr => rowArr.map(str => str.trim()))
 
+export const isDataOk = str => {
+  if (!str.trim()) return false
+  const arr = parseStrToArr(str)
+  if (arr.length < 2) return false
+  const areTitlesOk = JSON.stringify(arr[0]) === JSON.stringify(['OrderDate', 'Region', 'Rep', 'Item', 'Units', 'Unit Cost']);
+  if (!areTitlesOk) return false
+  const areArraysInside = arr.every(el => Array.isArray(el))
+  if (!areArraysInside) return false
+  const areSixElsInStr = arr.every(el => el.length >= 6)
+  if (!areSixElsInStr) return false
+  const areUnitsNumbers = !arr.some((el, index) => index !== 0 && isNaN(parseFloat(el[4].replace(',','.'))))
+  if (!areUnitsNumbers) return false
+  const areCostsNumbers = !arr.some((el, index) => index !== 0 && isNaN(parseFloat(el[5].replace(',','.'))))
+  if (!areCostsNumbers) return false
+  return true
+}
+
+export const shakeBtn = () => {
+  store.state.btnClass = 'shaking' 
+  store.state.btnText = 'Wrong data' 
+  setTimeout(() => { 
+    store.state.btnClass = 'not-shaking' 
+    store.state.btnText = 'Update'
+  }, 600)
+}
+
+
 const getTitlesArr = str => parseStrToArr(str)[0]
 
 const getRowsArr = str => parseStrToArr(str).slice(1)
 
 export const getColsForSalesQuasarTable = str => {
-  
   return getTitlesArr(str).map(title => ({
     name: title,
     label: title,
@@ -72,7 +99,7 @@ export const getRowsForSummaryQuasarTable = str => {
 
     const totalUnits = arr
       .filter(row => row['Region'] === currentRegion)
-      .reduce((accumulator, o) => {
+      .reduce((accumulator, row) => {
         return accumulator + row['Units']
       }, 0)
     newArr.at(-1)['Total Units'] = totalUnits

@@ -1,11 +1,21 @@
-<template> 
-  <p>My first component in <img src="../assets/logo.svg" alt="vue logo">ue</p>
-  <router-link class="btn" to="/task">Go to task</router-link>
+<template>
+  <section>
+    <p>My first component in <img src="../assets/logo.svg" alt="vue logo">ue</p>
+    <router-link class="btn" to="/task">Go to task</router-link>
+  </section>
 </template>
 
 <style lang="scss" scoped>
   $blackish: rgba(0, 0, 0, 0.65);
   $grayish: rgba(0, 0, 0, 0.1);
+
+  section {
+    width: 100%;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   img {
     position: relative;

@@ -21,16 +21,16 @@
     },
     methods: {
       parseData(): void {
-        console.log(store.state)
+        // console.log(store.state)
         const text = store.state.inputText
         if (!isDataOk(text)) {
           shakeBtn()
           return
         }
-        store.state.rowsFirstTable = getRowsForTable1(text)
-        store.state.rowsSecondTable = getRowsForTable2(text)
-        store.state.colsFirstTable = getColsForTable1(text)
-        store.state.colsSecondTable = getColsForTable2()
+        store.state.colsTable1 = getColsForTable1(text)
+        store.state.rowsTable1 = getRowsForTable1(text)
+        store.state.colsTable2 = getColsForTable2()
+        store.state.rowsTable2 = getRowsForTable2(text)
         store.state.showTable = true
         store.state.btnText = 'Update'
       },

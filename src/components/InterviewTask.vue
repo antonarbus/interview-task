@@ -3,15 +3,15 @@
   <TextArea />
   <ParseBtn />
   <TableQuasar
-    :rows="store.state.rowsFirstTable"
-    :cols="store.state.colsFirstTable"
+    :rows="store.state.rowsTable1"
+    :cols="store.state.colsTable1"
     :isShown="store.state.showTable"
     :headerName="'Parsed data'"
     :tableName="'Sales report'"
   />
   <TableQuasar
-    :rows="store.state.rowsSecondTable"
-    :cols="store.state.colsSecondTable"
+    :rows="store.state.rowsTable2"
+    :cols="store.state.colsTable2"
     :isShown="store.state.showTable"
     :headerName="'Summary'"
     :tableName="'Grouped by region'"

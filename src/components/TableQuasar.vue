@@ -10,7 +10,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import type RowsType from '@/types/RowsType'
+import type RowsType from '@/types/RowsTypeTable1'
 import type ColsType from '@/types/ColsType'
 
 export default defineComponent({

@@ -1,4 +1,5 @@
 <template>
+  <GoBackBtn />
   <TaskSpecs />
   <TextArea />
   <ParseBtn />
@@ -19,22 +20,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { store } from './store'
-import TaskSpecs from './TaskSpecs.vue'
-import TextArea from './TextArea.vue'
-import ParseBtn from './ParseBtn.vue'
-import TableQuasar from './TableQuasar.vue'
+  import { defineComponent } from 'vue'
+  import { store } from '../store'
+  import GoBackBtn from './GoBackBtn.vue'
+  import TaskSpecs from './TaskSpecs.vue'
+  import TextArea from './TextArea.vue'
+  import ParseBtn from './ParseBtn.vue'
+  import TableQuasar from './TableQuasar.vue'
 
-export default defineComponent({
-  name: 'App',
-  components: { TaskSpecs, TextArea, ParseBtn, TableQuasar },
-  data() {
-    return {
-      store: store,
-    }
-  },
-})
+  export default defineComponent({
+    name: 'App',
+    components: { GoBackBtn, TaskSpecs, TextArea, ParseBtn, TableQuasar },
+    data() {
+      return {
+        store: store,
+      }
+    },
+  })
 </script>
 
 <style lang="scss"></style>

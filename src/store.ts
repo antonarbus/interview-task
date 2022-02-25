@@ -1,5 +1,5 @@
 import { reactive } from 'vue'
-import initText from './initText'
+import initText from '@/initText'
 import type RowsTypeTable1 from '@/types/RowsTypeTable1'
 import type RowsTypeTable2 from '@/types/RowsTypeTable2'
 import type ColsType from '@/types/ColsType'

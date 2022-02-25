@@ -6,29 +6,29 @@
 </template>
 
 <script lang="ts">
-import { store } from './store'
+  import { store } from '@/store'
 
-export default {
-  data() {
-    return {
-      state: store.state,
-    }
-  },
-}
+  export default {
+    data() {
+      return {
+        state: store.state,
+      }
+    },
+  }
 </script>
 
 <style lang="scss" scoped>
-section {
-  width: 100%;
-}
-.txt {
-  font-size: 1rem;
-}
-h1 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 1;
-  margin-top: 3rem;
-  text-align: center;
-}
+  section {
+    width: 100%;
+  }
+  .txt {
+    font-size: 1rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1;
+    margin-top: 3rem;
+    text-align: center;
+  }
 </style>

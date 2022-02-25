@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-  import { store } from './store'
+  import { store } from '@/store'
   import {
     isDataOk,
     getRowsForTable1,
@@ -21,7 +21,6 @@
     },
     methods: {
       parseData(): void {
-        // console.log(store.state)
         const text = store.state.inputText
         if (!isDataOk(text)) {
           shakeBtn()
@@ -30,9 +29,11 @@
         store.state.colsTable1 = getColsForTable1(text)
         store.state.rowsTable1 = getRowsForTable1(text)
         store.state.colsTable2 = getColsForTable2()
+        // debugger
         store.state.rowsTable2 = getRowsForTable2(text)
         store.state.showTable = true
         store.state.btnText = 'Update'
+        console.log(store.state)
       },
     },
   }

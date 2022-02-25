@@ -1,6 +1,6 @@
 // following row structure is required by Quasar table columns https://v1.quasar.dev/vue-components/table
 import moment from 'moment'
-import { store } from '../components/store'
+import { store } from '@/store'
 // import type RowsTypeTable1 from '@/types/RowsTypeTable1'
 import type RowsTypeTable2 from '@/types/RowsTypeTable2'
 
@@ -65,7 +65,7 @@ export function getColsForTable1(str: string): { name: string; align: string; fi
     label: title,
     field: title,
     align: 'center',
-    sortable: false,
+    sortable: true,
   }))
 }
 
@@ -78,7 +78,7 @@ export function getRowsForTable1(str: string): any[] {
   const arrFixedTypes = arrOfObj.map((row) => {
     row['Unit Cost'] = parseFloat(row['Unit Cost'].replace(',', '.'))
     row['Units'] = parseInt(row['Units'])
-    row['OrderDate'] = moment(row['OrderDate'], 'DD-MM-YYYY').format('DD.MM.YYYY')
+    row['OrderDate'] = moment(row['OrderDate'], 'DD.MM.YYYY').format('YYYY.MM.DD')
     return row
   })
   return arrFixedTypes
@@ -86,10 +86,10 @@ export function getRowsForTable1(str: string): any[] {
 
 export function getColsForTable2(): { name: string; align: string; field: string; label: string; sortable: boolean }[] {
     return [
-      { align: 'center', field: 'Last OrderDate', label: 'Last OrderDate', name: 'Last OrderDate', sortable: false, },
-      { align: 'center', field: 'Region', label: 'Region', name: 'Region', sortable: false },
-      { align: 'center', field: 'Total Units', label: 'Total Units', name: 'Total Units', sortable: false, },
-      { align: 'center', field: 'Total Cost', label: 'Total Cost', name: 'Total Cost', sortable: false, },
+      { align: 'center', field: 'Last OrderDate', label: 'Last OrderDate', name: 'Last OrderDate', sortable: true, },
+      { align: 'center', field: 'Region', label: 'Region', name: 'Region', sortable: true },
+      { align: 'center', field: 'Total Units', label: 'Total Units', name: 'Total Units', sortable: true, },
+      { align: 'center', field: 'Total Cost', label: 'Total Cost', name: 'Total Cost', sortable: true, },
     ]
 }
 

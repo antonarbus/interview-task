@@ -1,6 +1,6 @@
 // following row structure is required by Quasar table columns https://v1.quasar.dev/vue-components/table
 import moment from 'moment'
-import { store } from '@/store'
+import store from '@/store'
 // import type RowsTypeTable1 from '@/types/RowsTypeTable1'
 import type RowsTypeTable2 from '@/types/RowsTypeTable2'
 

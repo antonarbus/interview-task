@@ -4,7 +4,7 @@ import type RowsTypeTable1 from '@/types/RowsTypeTable1'
 import type RowsTypeTable2 from '@/types/RowsTypeTable2'
 import type ColsType from '@/types/ColsType'
 
-export const store = {
+const store = {
   state: reactive({
     inputText: initText as string,
     showTable: false as boolean,
@@ -16,3 +16,5 @@ export const store = {
     rowsTable2: [] as RowsTypeTable2[],
   }),
 }
+
+export default store

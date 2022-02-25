@@ -15,26 +15,11 @@
 
   export default defineComponent({
     props: {
-      rows: {
-        required: true,
-        type: Array as PropType<RowsType[]>,
-      },
-      cols: {
-        required: true,
-        type: Array as PropType<ColsType[]>,
-      },
-      isShown: {
-        required: true,
-        type: Boolean,
-      },
-      tableName: {
-        required: false,
-        type: String,
-      },
-      headerName: {
-        required: false,
-        type: String,
-      },
+      rows: { required: true, type: Array as PropType<RowsType[]> },
+      cols: { required: true, type: Array as PropType<ColsType[]> },
+      isShown: { required: true, type: Boolean },
+      tableName: { required: false, type: String },
+      headerName: { required: false, type: String },
     },
   })
 </script>

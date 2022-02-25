@@ -21,7 +21,7 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue'
-  import { store } from '../store'
+  import store from '../store'
   import GoBackBtn from './GoBackBtn.vue'
   import TaskSpecs from './TaskSpecs.vue'
   import TextArea from './TextArea.vue'
